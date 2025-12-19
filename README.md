@@ -7,7 +7,7 @@ All data for the submitted research paper have been computed using this code.
 
 <ul>
     <li>
-        Figure 1: <a href="https://github.com/PavelStransky/MulticomponentCat/blob/main/tasks/MulticomponentCat/Wigner.jl">Wigner.jl</a> (Wigner functions)
+        Figure 1: <a href="https://github.com/PavelStransky/MulticomponentCat/blob/main/WignerFunction.jl">WignerFunction.jl</a> (Wigner functions), <a href="https://github.com/PavelStransky/MulticomponentCat/blob/main/Trajectory.jl">Trajectory.jl</a> (classical trajectory in all subspaces)
     </li>
 </ul>
 
