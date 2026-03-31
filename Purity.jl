@@ -2,6 +2,9 @@ include("Rabi.jl")
 
 const PATH = ""
 
+gr()
+default(size=(1920,1080))
+
 function CalculatePurity(rabii, λf; maxt=200, numt=2001)
     # Initial and final systems
     rabif = Copy(rabii; λ=λf)
@@ -21,9 +24,10 @@ function CalculatePurity(rabii, λf; maxt=200, numt=2001)
     end
 
     p = plot(ts, purity, xlabel="\$t\$", ylabel="Purity", title="Evolution of the purity", legend=false)
+    display(p)
     savefig(p, "$(PATH)purity_$(rabii)_$(λf).png")
 
     Export("$(PATH)purity_$(rabii)_$(λf)", tout, purity)
 end
 
-CalculatePurity(Rabi(R=50, λ=1.5, δ=0.5, j=1//2), 0.2, maxt=300)
+CalculatePurity(Rabi(R=50, λ=1.5, δ=0.5, j=1//2), -sqrt(2.0) / 5, maxt=300)

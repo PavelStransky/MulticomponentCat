@@ -187,7 +187,7 @@ function SurvivalAmplitude(system::QuantumSystem; Ψ0=nothing, mint=0.0, maxt=10
         Ψ = u * Ψ0      # Initial state
 
         for i in 1:numt
-            s = sum(Ψ.data .* Ψ0.data)
+            s = sum(conj(Ψ0.data) .* Ψ.data)
             result[1, i] = real(s)
             result[2, i] = imag(s)
             Ψ = du * Ψ
@@ -387,7 +387,7 @@ function SurvivalLog(system::QuantumSystem; mint=1e-1, maxt=100, numt=10000, Ψ0
     p = plot(tout, St, title="S log", xaxis=:log, yaxis=:log)
     display(p)    
 
-    Export("d:\\Sl.txt", log10.(tout), log10.(St), 0)
+    Export("Sl.txt", log10.(tout), log10.(St), 0)
 end
 
 """ Level dynamics """

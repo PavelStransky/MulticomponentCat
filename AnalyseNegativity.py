@@ -3,9 +3,9 @@ import matplotlib.pyplot as plt
 
 PATH = ''
 
-J2 = 4
+J2 = 2
 OMEGA = 1
-R = 50
+R = 20
 
 LAMBDA = -np.sqrt(2.0) / 5
 DELTA = 0.5

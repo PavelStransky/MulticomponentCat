@@ -2,6 +2,9 @@ include("Rabi.jl")
 
 const PATH = ""
 
+gr()
+default(size=(1920,1080))
+
 function CalculateWigner(rabii, λf; wignerMesh=401, limits=2.0, firstIndex=1, maxt=200, numt=1000)
     # Initial and final systems
     rabif = Copy(rabii; λ=λf)

@@ -2,6 +2,7 @@ using QuantumOptics
 using Statistics
 using LinearAlgebra
 
+
 include("Export.jl")
 include("Quantum.jl")
 
@@ -77,8 +78,8 @@ Base.show(io::IO, rabi::Rabi) = print(io, String(rabi))
 Nopt(R, λ=0, μ=0, ν=0) = trunc(Int, max(R, R + 3 * R * (λ^2 + 4*μ)))
 Nopt(rabi::Rabi) = Nopt(rabi.R, rabi.λ, rabi.μ)
 
-FockBasis(rabi::Rabi) = QuantumOptics.FockBasis(rabi.N)
-SpinBasis(rabi::Rabi) = QuantumOptics.SpinBasis(rabi.j)
+QuantumOptics.FockBasis(rabi::Rabi) = QuantumOptics.FockBasis(rabi.N)
+QuantumOptics.SpinBasis(rabi::Rabi) = QuantumOptics.SpinBasis(rabi.j)
 
 " Operators "
 A(rabi::Rabi) = tensor(destroy(FockBasis(rabi)), one(SpinBasis(rabi)))
@@ -93,7 +94,7 @@ Jp(rabi::Rabi) = 0.5 * tensor(one(FockBasis(rabi)), sigmap(SpinBasis(rabi)))
 Jm(rabi::Rabi) = 0.5 * tensor(one(FockBasis(rabi)), sigmam(SpinBasis(rabi)))
 
 Id(rabi::Rabi) = tensor(one(FockBasis(rabi)), one(SpinBasis(rabi)))
-M(rabi::Rabi) = (N(r) + Jz(r) + rabi.j * Id(rabi))
+M(rabi::Rabi) = (N(rabi) + Jz(rabi) + rabi.j * Id(rabi))
 
 X(rabi::Rabi) = 1.0 / sqrt(4.0 * rabi.R * rabi.j) * (A(rabi) + Ad(rabi))
 P(rabi::Rabi) = im / sqrt(4.0 * rabi.R * rabi.j) * (Ad(rabi) - A(rabi))
